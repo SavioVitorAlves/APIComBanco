@@ -1,3 +1,4 @@
 <Solution>
   <Project Path="APIComBanco.API/APIComBanco.API.csproj" />
+  <Project Path="APIComBanco.Desktop/APIComBanco.Desktop.csproj" Id="9e83688d-04f8-48b2-8647-3007d168700a" />
 </Solution>
