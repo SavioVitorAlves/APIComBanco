@@ -1,3 +1,5 @@
+using APIComBanco.Desktop.Services;
+using APIComBanco.Desktop.Views;
 using System.Runtime.InteropServices;
 
 namespace APIComBanco.Desktop
@@ -26,8 +28,7 @@ namespace APIComBanco.Desktop
             // 2. Aplicar o Arredondamento
             // Chamamos após o InitializeComponent para garantir que o panel1 já exista
             panel1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel1.Width, panel1.Height, 30, 30));
-            txtEmail.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, txtEmail.Width, txtEmail.Height, 15, 15));
-            txtSenha.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, txtSenha.Width, txtSenha.Height, 15, 15));
+            
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -39,5 +40,32 @@ namespace APIComBanco.Desktop
         {
            
         }
+
+        private async void btnEntrar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var authService = new AuthService();
+                bool logado = await authService.Autenticar(txtEmail.Text, txtSenha.Text);
+
+                if (logado)
+                {
+                    MessageBox.Show("Bem-vindo!");
+                    this.Hide();
+                    FormPrincipal principal = new FormPrincipal();
+                    principal.Show();
+                }
+                else
+                {
+                    MessageBox.Show($"Usuário ou senha incorretos ou Token expirado. {txtEmail.Text} {txtSenha.Text}");
+                }
+            }
+            catch (Exception ex) 
+            {
+                MessageBox.Show($"Ocorreu um erro técnico: {ex.Message}\n\nVerifique se a API está rodando no endereço correto.");
+            }
+            
+        }
+
     }
 }

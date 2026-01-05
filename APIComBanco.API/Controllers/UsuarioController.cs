@@ -18,6 +18,12 @@ namespace APIComBanco.API.Controllers
             return Ok(await _usuarioRepository.SelecionarAll());
         }
 
+        [HttpGet("usuarios/{id}")]
+        public async Task<ActionResult> GetAllUsuario(int id)
+        {
+            return Ok(await _usuarioRepository.SelecionarByPk(id));
+        }
+
         [HttpPost("create")]
         public async Task<ActionResult> createUsuario(Usuarios usuario)
         {
@@ -31,6 +37,7 @@ namespace APIComBanco.API.Controllers
                 return BadRequest("Ocorreu um erro ao salvar o usuario!");
             }
         }
+
 
         [HttpPut("update/{id}")]
         public async Task<ActionResult> updateUsuario([FromBody] Usuarios usuario, int id)

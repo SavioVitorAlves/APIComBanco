@@ -29,24 +29,43 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            label1 = new Label();
             txtSenha = new TextBox();
             txtEmail = new TextBox();
-            button1 = new Button();
+            label1 = new Label();
+            btnEntrar = new Button();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = Color.Silver;
-            panel1.Controls.Add(label1);
             panel1.Controls.Add(txtSenha);
             panel1.Controls.Add(txtEmail);
-            panel1.Controls.Add(button1);
+            panel1.Controls.Add(label1);
+            panel1.Controls.Add(btnEntrar);
             panel1.Location = new Point(26, 23);
             panel1.Name = "panel1";
             panel1.Size = new Size(347, 417);
             panel1.TabIndex = 0;
+            // 
+            // txtSenha
+            // 
+            txtSenha.Font = new Font("Segoe UI", 13F);
+            txtSenha.Location = new Point(38, 202);
+            txtSenha.Name = "txtSenha";
+            txtSenha.PlaceholderText = "Senha";
+            txtSenha.Size = new Size(277, 31);
+            txtSenha.TabIndex = 1;
+            txtSenha.UseSystemPasswordChar = true;
+            // 
+            // txtEmail
+            // 
+            txtEmail.Font = new Font("Segoe UI", 13F);
+            txtEmail.Location = new Point(38, 148);
+            txtEmail.Name = "txtEmail";
+            txtEmail.PlaceholderText = "Email";
+            txtEmail.Size = new Size(277, 31);
+            txtEmail.TabIndex = 0;
             // 
             // label1
             // 
@@ -60,33 +79,17 @@
             label1.TabIndex = 2;
             label1.Text = "Login";
             // 
-            // txtSenha
+            // btnEntrar
             // 
-            txtSenha.Font = new Font("Segoe UI", 16F);
-            txtSenha.Location = new Point(38, 183);
-            txtSenha.Name = "txtSenha";
-            txtSenha.Size = new Size(277, 36);
-            txtSenha.TabIndex = 1;
-            // 
-            // txtEmail
-            // 
-            txtEmail.Font = new Font("Segoe UI", 12F);
-            txtEmail.Location = new Point(38, 133);
-            txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(277, 29);
-            txtEmail.TabIndex = 1;
-            txtEmail.TextChanged += txtEmail_TextChanged;
-            // 
-            // button1
-            // 
-            button1.Font = new Font("Georgia", 13F, FontStyle.Bold);
-            button1.ForeColor = Color.DarkSlateGray;
-            button1.Location = new Point(38, 257);
-            button1.Name = "button1";
-            button1.Size = new Size(277, 45);
-            button1.TabIndex = 0;
-            button1.Text = "Entrar";
-            button1.UseVisualStyleBackColor = true;
+            btnEntrar.Font = new Font("Georgia", 13F, FontStyle.Bold);
+            btnEntrar.ForeColor = Color.DarkSlateGray;
+            btnEntrar.Location = new Point(38, 252);
+            btnEntrar.Name = "btnEntrar";
+            btnEntrar.Size = new Size(277, 45);
+            btnEntrar.TabIndex = 2;
+            btnEntrar.Text = "Entrar";
+            btnEntrar.UseVisualStyleBackColor = true;
+            btnEntrar.Click += btnEntrar_Click;
             // 
             // Form1
             // 
@@ -95,7 +98,10 @@
             BackColor = Color.DarkSlateGray;
             ClientSize = new Size(402, 468);
             Controls.Add(panel1);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
             Name = "Form1";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Login";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -106,8 +112,8 @@
 
         private Panel panel1;
         private Label label1;
-        private TextBox txtSenha;
+        private Button btnEntrar;
         private TextBox txtEmail;
-        private Button button1;
+        private TextBox txtSenha;
     }
 }

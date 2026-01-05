@@ -1,3 +1,6 @@
+using APIComBanco.Desktop.Services;
+using APIComBanco.Desktop.Views;
+
 namespace APIComBanco.Desktop
 {
     internal static class Program
@@ -11,7 +14,16 @@ namespace APIComBanco.Desktop
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
+            if (AuthService.IsTokenValido())
+            {
+                // Se o token é válido, vai direto para a tela principal
+                Application.Run(new FormPrincipal());
+            }
+            else
+            {
+                // Se expirou ou não existe, pede login
+                Application.Run(new Form1());
+            }
         }
     }
 }
